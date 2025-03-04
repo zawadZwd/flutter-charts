@@ -1,21 +1,21 @@
 part of charts_painter;
 
-/// Behaviour of the chart
+/// Behavior of the chart
 /// [isScrollable] - If chart is scrollable then width of canvas is ignored and
 /// chart will take any size it needs. Chart has to be wrapped with [SingleChildScrollView]
 /// or similar scrollable widget.
 /// [onItemClicked] - Returns index of clicked item.
-class ChartBehaviour {
-  /// Default constructor for ChartBehaviour
+class ChartBehavior {
+  /// Default constructor for ChartBehavior
   /// If chart is scrollable then it will ignore width limit and it should be wrapped in [SingleChildScrollView]
-  const ChartBehaviour({
+  const ChartBehavior({
     this.scrollSettings = const ScrollSettings.none(),
     this.onItemClicked,
     this.onItemHoverEnter,
     this.onItemHoverExit,
   });
 
-  ChartBehaviour._lerp(
+  ChartBehavior._lerp(
     this.scrollSettings,
     this.onItemClicked,
     this.onItemHoverEnter,
@@ -39,9 +39,9 @@ class ChartBehaviour {
   /// will have to handle clicked index to show data they want to show
   final ValueChanged<ItemBuilderData>? onItemHoverExit;
 
-  /// Animate Behaviour from one state to other
-  static ChartBehaviour lerp(ChartBehaviour a, ChartBehaviour b, double t) {
-    return ChartBehaviour._lerp(
+  /// Animate Behavior from one state to other
+  static ChartBehavior lerp(ChartBehavior a, ChartBehavior b, double t) {
+    return ChartBehavior._lerp(
       ScrollSettings.lerp(a.scrollSettings, b.scrollSettings, t),
       t > 0.5 ? b.onItemClicked : a.onItemClicked,
       t > 0.5 ? b.onItemHoverEnter : a.onItemHoverEnter,
