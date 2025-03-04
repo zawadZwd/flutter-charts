@@ -35,7 +35,7 @@ Widget getMultiValueChart({
   List<DecorationPainter>? foregroundDecorations,
   List<DecorationPainter>? backgroundDecorations,
   ItemOptions? options,
-  ChartBehavior? behaviour,
+  ChartBehavior? behavior,
   DataStrategy strategy = const DefaultDataStrategy(stackMultipleValues: true),
 }) {
   return SizedBox(
@@ -51,7 +51,7 @@ Widget getMultiValueChart({
             dataStrategy: strategy,
           ),
           itemOptions: options ?? BarItemOptions(),
-          behaviour: behaviour ?? ChartBehavior(),
+          behavior: behavior ?? ChartBehavior(),
           backgroundDecorations: backgroundDecorations ?? [],
           foregroundDecorations: foregroundDecorations ?? [],
         ),

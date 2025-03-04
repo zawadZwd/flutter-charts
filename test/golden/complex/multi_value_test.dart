@@ -233,7 +233,7 @@ void main() {
                 );
               },
             ),
-            behaviour: ChartBehavior(),
+            behavior: ChartBehavior(),
           )),
     ]);
   });

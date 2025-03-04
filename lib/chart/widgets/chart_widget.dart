@@ -3,7 +3,7 @@ part of charts_painter;
 /// Chart widget will initiate [_ChartPainter] with passed state
 /// chart size and [GestureDetector] are added here as well
 ///
-// TODO(lukaknezic): Add ScrollView here as well? We already have access to [ChartState.behaviour.isScrollable]
+// TODO(lukaknezic): Add ScrollView here as well? We already have access to [ChartState.behavior.isScrollable]
 class _ChartWidget<T> extends StatelessWidget {
   const _ChartWidget({
     this.height = 240.0,
@@ -41,7 +41,7 @@ class _ChartWidget<T> extends StatelessWidget {
   }
 
   double _calcItemWidthForScrollable(double frameWidth) {
-    final visibleItems = state.behaviour.scrollSettings.visibleItems;
+    final visibleItems = state.behavior.scrollSettings.visibleItems;
     if (visibleItems == null) {
       return _calcItemWidthNonScrollable();
     }
@@ -59,7 +59,7 @@ class _ChartWidget<T> extends StatelessWidget {
       end: _calcItemWidthForScrollable(frameWidth),
     );
 
-    return sizeTween.transform(state.behaviour.scrollSettings._isScrollable);
+    return sizeTween.transform(state.behavior.scrollSettings._isScrollable);
   }
 
   Size _calcChartSize(double itemWidth, double frameWidth, double frameHeight) {
@@ -67,8 +67,7 @@ class _ChartWidget<T> extends StatelessWidget {
     final totalItemWidth = itemWidth + _horizontalItemPadding;
     final listWidth = totalItemWidth * listSize;
 
-    final chartWidth = frameWidth +
-        (listWidth - frameWidth) * state.behaviour.scrollSettings._isScrollable;
+    final chartWidth = frameWidth + (listWidth - frameWidth) * state.behavior.scrollSettings._isScrollable;
     final finalWidth = chartWidth + state.defaultPadding.horizontal;
 
     return Size(finalWidth, frameHeight);
@@ -78,10 +77,8 @@ class _ChartWidget<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final frameWidth =
-            constraints.maxWidth.isFinite ? constraints.maxWidth : width!;
-        final frameHeight =
-            constraints.maxHeight.isFinite ? constraints.maxHeight : height!;
+        final frameWidth = constraints.maxWidth.isFinite ? constraints.maxWidth : width!;
+        final frameHeight = constraints.maxHeight.isFinite ? constraints.maxHeight : height!;
 
         final itemWidth = _calcItemWidth(frameWidth);
         final size = _calcChartSize(itemWidth, frameWidth, frameHeight);

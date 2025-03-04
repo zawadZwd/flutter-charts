@@ -31,7 +31,7 @@ The Widget you can use is `Chart` or `AnimatedChart` if you want to show animati
 - **Data**: What is the data that needs to be shown
 - **Item options**: How to draw that data points into items on chart
 - **Decorations**: Various additional objects that enhance and completes look of the chart. They are divided into backgroundDecorations (behind items) or in foregroundDecorations (in front of items).
-- **Chart behaviour**: Not used for drawing, but contain scrollable and item click logic
+- **Chart behavior**: Not used for drawing, but contain scrollable and item click logic
 
 Now we will explain each of these:
 
@@ -137,9 +137,9 @@ You can add padding that equals the chart margins which will set you to the star
     },
 ```
 
-## Chart behaviour
+## Chart behavior
 
-Chart behaviour has just two parameters:
+Chart behavior has just two parameters:
 
 - `scrollSettings` - used to config the chart to be scrollable or not. You still need to wrap it with SingleChildScrollView.
 - `onItemClicked` - when set the tap events on items are registered and will invoke this method.

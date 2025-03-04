@@ -5,7 +5,7 @@ part of charts_painter;
 ///
 /// [itemOptions] Contains all modifiers for separate bar item
 ///
-/// [behaviour] How chart reacts and sizes itself
+/// [behavior] How chart reacts and sizes itself
 ///
 /// [foregroundDecorations] and [backgroundDecorations] decorations that aren't
 /// connected directly to the chart but can show important info (Axis, target line...)
@@ -18,7 +18,7 @@ class ChartState<T> {
   ChartState({
     required this.data,
     required this.itemOptions,
-    this.behaviour = const ChartBehavior(),
+    this.behavior = const ChartBehavior(),
     this.backgroundDecorations = const <DecorationPainter>[],
     this.foregroundDecorations = const <DecorationPainter>[],
   })  : assert(data.isNotEmpty, 'No items!'),
@@ -34,14 +34,14 @@ class ChartState<T> {
   factory ChartState.line(
     ChartData<T> data, {
     required BubbleItemOptions itemOptions,
-    ChartBehavior behaviour = const ChartBehavior(),
+    ChartBehavior behavior = const ChartBehavior(),
     List<DecorationPainter> backgroundDecorations = const <DecorationPainter>[],
     List<DecorationPainter> foregroundDecorations = const <DecorationPainter>[],
   }) {
     return ChartState(
       data: data,
       itemOptions: itemOptions,
-      behaviour: behaviour,
+      behavior: behavior,
       backgroundDecorations: backgroundDecorations.isEmpty ? [GridDecoration()] : backgroundDecorations,
       foregroundDecorations: foregroundDecorations.isEmpty ? [SparkLineDecoration()] : foregroundDecorations,
     );
@@ -52,14 +52,14 @@ class ChartState<T> {
   factory ChartState.bar(
     ChartData<T> data, {
     required BarItemOptions itemOptions,
-    ChartBehavior behaviour = const ChartBehavior(),
+    ChartBehavior behavior = const ChartBehavior(),
     List<DecorationPainter> backgroundDecorations = const <DecorationPainter>[],
     List<DecorationPainter> foregroundDecorations = const <DecorationPainter>[],
   }) {
     return ChartState(
       data: data,
       itemOptions: itemOptions,
-      behaviour: behaviour,
+      behavior: behavior,
       backgroundDecorations: backgroundDecorations.isEmpty ? [GridDecoration()] : backgroundDecorations,
       foregroundDecorations: foregroundDecorations,
     );
@@ -67,7 +67,7 @@ class ChartState<T> {
 
   ChartState._lerp(
     this.data, {
-    this.behaviour = const ChartBehavior(),
+    this.behavior = const ChartBehavior(),
     this.backgroundDecorations = const [],
     this.foregroundDecorations = const [],
     required this.dataRenderer,
@@ -92,7 +92,7 @@ class ChartState<T> {
   final ItemOptions itemOptions;
 
   /// [ChartBehavior] define how chart behaves and how it should react
-  final ChartBehavior behaviour;
+  final ChartBehavior behavior;
 
   // Theme layer
   /// Decorations for chart background, the go below the items
@@ -147,7 +147,7 @@ class ChartState<T> {
   static ChartState<T?> lerp<T>(ChartState<T?> a, ChartState<T?> b, double t) {
     return ChartState<T?>._lerp(
       ChartData.lerp(a.data, b.data, t),
-      behaviour: ChartBehavior.lerp(a.behaviour, b.behaviour, t),
+      behavior: ChartBehavior.lerp(a.behavior, b.behavior, t),
       // Find background matches, if found, then animate to them, else just show them.
       backgroundDecorations: b.backgroundDecorations.map<DecorationPainter>((e) {
         final _match = a.backgroundDecorations.firstWhereOrNull((element) => element.isSameType(e));

@@ -10,7 +10,7 @@ abstract class DecorationPainter {
 
   /// Get extra margin (not definable by the user). This makes sure that any decoration
   /// that leaves original drawing window is not drawing outside of that window (This is not
-  /// enforced right now but it's unwanted behaviour)
+  /// enforced right now but it's unwanted behavior)
   ///
   /// Any decoration that needs space on side of the chart (any side) has to override this
   /// method and return how much space it needs and where as [EdgeInsets].

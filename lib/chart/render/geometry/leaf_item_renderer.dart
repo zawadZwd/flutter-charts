@@ -5,8 +5,7 @@ part of charts_painter;
 /// This is a [LeafRenderObjectWidget] meaning it cannot have any children.
 /// All customization for this list items can be done with [BarItemOptions] or [BubbleItemOptions]
 class LeafChartItemRenderer<T> extends LeafRenderObjectWidget {
-  LeafChartItemRenderer(this.item, this.state, this.itemOptions,
-      {this.listIndex = 0, this.itemIndex = 0, required this.drawDataItem});
+  LeafChartItemRenderer(this.item, this.state, this.itemOptions, {this.listIndex = 0, this.itemIndex = 0, required this.drawDataItem});
 
   final ChartItem<T?> item;
   final ChartState<T?> state;
@@ -28,8 +27,7 @@ class LeafChartItemRenderer<T> extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(
-      BuildContext context, _RenderLeafChartItem<T?> renderObject) {
+  void updateRenderObject(BuildContext context, _RenderLeafChartItem<T?> renderObject) {
     renderObject
       ..state = state
       ..itemOptions = itemOptions
@@ -146,7 +144,7 @@ class _RenderLeafChartItem<T> extends RenderBox {
   @override
   bool hitTest(BoxHitTestResult result, {required Offset position}) {
     // Leaf render objects should only be hit tested if they have a click handler, else return false.
-    if (_state.behaviour.onItemClicked == null) {
+    if (_state.behavior.onItemClicked == null) {
       return false;
     }
 
@@ -161,18 +159,15 @@ class _RenderLeafChartItem<T> extends RenderBox {
   @override
   void handleEvent(PointerEvent event, BoxHitTestEntry entry) {
     if (event is PointerDownEvent) {
-      _state.behaviour.onItemClicked
-          ?.call(ItemBuilderData<T>(item, itemIndex, listIndex));
+      _state.behavior.onItemClicked?.call(ItemBuilderData<T>(item, itemIndex, listIndex));
     }
 
     if (event is PointerHoverEvent) {
-      _state.behaviour.onItemHoverEnter
-          ?.call(ItemBuilderData<T>(item, itemIndex, listIndex));
+      _state.behavior.onItemHoverEnter?.call(ItemBuilderData<T>(item, itemIndex, listIndex));
     }
 
     if (event is PointerHoverEvent) {
-      _state.behaviour.onItemHoverExit
-          ?.call(ItemBuilderData<T>(item, itemIndex, listIndex));
+      _state.behavior.onItemHoverExit?.call(ItemBuilderData<T>(item, itemIndex, listIndex));
     }
   }
 
@@ -181,9 +176,7 @@ class _RenderLeafChartItem<T> extends RenderBox {
     final canvas = context.canvas;
     canvas.save();
 
-    final _itemOffset = offset +
-        Offset(_state.defaultMargin.left + _state.defaultPadding.left,
-            _state.defaultMargin.top + _state.defaultPadding.top);
+    final _itemOffset = offset + Offset(_state.defaultMargin.left + _state.defaultPadding.left, _state.defaultMargin.top + _state.defaultPadding.top);
     canvas.translate(_itemOffset.dx, _itemOffset.dy);
 
     // Use item painter from ItemOptions to draw the item on the chart
