@@ -3,8 +3,7 @@ import 'dart:math';
 import 'package:charts_painter/chart.dart';
 import 'package:flutter/material.dart';
 
-TextStyle get defaultTextStyle =>
-    TextStyle(fontFamily: 'Roboto', color: Colors.black54, fontSize: 12.0);
+TextStyle get defaultTextStyle => TextStyle(fontFamily: 'Roboto', color: Colors.black54, fontSize: 12.0);
 
 Widget getDefaultChart({
   List<DecorationPainter>? foregroundDecorations,
@@ -17,9 +16,7 @@ Widget getDefaultChart({
     child: Chart<void>(
       state: ChartState(
         data: ChartData.fromList(
-          [5, 6, 8, 4, 3, 5, 2, 6, 7]
-              .map((e) => BarValue<void>(e.toDouble()))
-              .toList(),
+          [5, 6, 8, 4, 3, 5, 2, 6, 7].map((e) => BarValue<void>(e.toDouble())).toList(),
           valueAxisMaxOver: 2,
         ),
         itemOptions: BarItemOptions(
@@ -38,7 +35,7 @@ Widget getMultiValueChart({
   List<DecorationPainter>? foregroundDecorations,
   List<DecorationPainter>? backgroundDecorations,
   ItemOptions? options,
-  ChartBehaviour? behaviour,
+  ChartBehavior? behaviour,
   DataStrategy strategy = const DefaultDataStrategy(stackMultipleValues: true),
 }) {
   return SizedBox(
@@ -49,18 +46,12 @@ Widget getMultiValueChart({
       child: Chart<void>(
         state: ChartState(
           data: ChartData(
-            List.generate(
-                size,
-                (index) => List.generate(
-                    8,
-                    (i) => BarValue<void>(
-                        (Random(((index + 1) * (i + 1))).nextDouble() * 15) +
-                            5))),
+            List.generate(size, (index) => List.generate(8, (i) => BarValue<void>((Random(((index + 1) * (i + 1))).nextDouble() * 15) + 5))),
             valueAxisMaxOver: 2,
             dataStrategy: strategy,
           ),
           itemOptions: options ?? BarItemOptions(),
-          behaviour: behaviour ?? ChartBehaviour(),
+          behaviour: behaviour ?? ChartBehavior(),
           backgroundDecorations: backgroundDecorations ?? [],
           foregroundDecorations: foregroundDecorations ?? [],
         ),

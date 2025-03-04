@@ -98,7 +98,7 @@ The `data` that’s passed into the builder can be used to build different kind 
 
 Besides builder, the other useful parameters in item options are `maxBarWidth` , `minBarWidth` , `startPosition` , `padding`.<br>
 
-If you want to listen to **item taps** you can do it by setting `ChartBehaviour(onItemClicked)` - you can read more about ChartBehaviour below.
+If you want to listen to **item taps** you can do it by setting `ChartBehavior(onItemClicked)` - you can read more about ChartBehavior below.
 In case of a WidgetItemOptions, you could also provide GestureDetectors and Buttons and they will all work.
 
 ## Decorations
@@ -193,7 +193,7 @@ There’s a lot more things possible with this package, but to keep this README 
 
 ### Scrollable chart
 
-Charts can also be scrollable, to use scroll first you have to wrap chart your chart in `SingleChildScrollView` widget. Then in `ChartBehaviour` make sure you set `isScrollable` to true.
+Charts can also be scrollable, to use scroll first you have to wrap chart your chart in `SingleChildScrollView` widget. Then in `ChartBehavior` make sure you set `isScrollable` to true.
 
 ![https://raw.githubusercontent.com/infinum/flutter-charts/master/assets/scrollable_chart.gif](https://raw.githubusercontent.com/infinum/flutter-charts/master/assets/scrollable_chart.gif)
 
